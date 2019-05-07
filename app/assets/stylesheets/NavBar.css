@@ -1,0 +1,9 @@
+.NavBar {
+  text-align: left;
+}
+
+.NavBar li {
+  list-style: none;
+  list-style-type: none;
+  text-decoration: none;
+}
