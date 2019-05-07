@@ -30,7 +30,7 @@ class AddUser extends React.Component {
     }).then((response) => {
       return response.json().then((json) => {
         if(response.status === 201) {
-          this.setState({responseOk: true, message: 'User was successfully submitted'})
+          this.setState({responseOk: true})
         } else {
           this.setState({responseOk: false, errors: json})
         }
