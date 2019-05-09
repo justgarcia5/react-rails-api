@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cards = props => (
   <div className='cards-container'>
-    <a href={`/edit_user/${props.id}`} >
+    <a href={`/edit_users/${props.id}`} >
       <div className='cards-items'>
         <p>
           First Name: {props.firstName}

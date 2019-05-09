@@ -3,23 +3,36 @@
 }
 .cards-container {
   border: 2px solid black;
-  width: 200px;
+  width: 500px;
   text-align: center;
   margin: 20px auto;
+  background-color: green;
+  border-radius: 10px;
 }
+
+@media {
+  .cards-container {
+    min-width: 400px;
+  }
+}
+
 .cards-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.cards-container:hover a {
   text-decoration: none;
   color: black;
 }
 
-.cards-container li {
-  list-style: none;
-  list-style-type: none;
+.cards-container:hover {
+  background-color: lightgreen;
 }
 
 .cards-items {
   text-align: center;
-
+  font-size: 20px;
 }
 .title {
   text-align: center;
