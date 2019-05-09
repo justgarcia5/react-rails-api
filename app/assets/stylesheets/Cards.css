@@ -1,15 +1,8 @@
-* {
-  box-sizing: border-box;
-}
 .cards-container {
   border: 2px solid black;
   width: 200px;
   text-align: center;
   margin: 20px auto;
-}
-.cards-container a {
-  text-decoration: none;
-  color: black;
 }
 
 .cards-container li {
@@ -20,7 +13,4 @@
 .cards-items {
   text-align: center;
 
-}
-.title {
-  text-align: center;
 }
