@@ -2,9 +2,11 @@ import React from 'react'
 
 import Errors from './Errors'
 
+
 class EditUser extends React.Component {
   state = {
     responseOk: false,
+    errors: null,
     users: [],
     userAttributes: {
       first_name: '',
@@ -14,12 +16,14 @@ class EditUser extends React.Component {
   }
 
   componentDidMount = () => {
-    const { userAttributes } = this.state
+    let { users } = this.state
     fetch(`/users.json`)
     .then((response) => response.json())
     .then((users) => {
-      let filteredUsers = users.filter((user) => user.id == this.props.params)
-      // console.log(user.id)
+      // console.log( users)
+      let filteredUsers = users.filter((user) => user.id == this.props.match.params.id)
+        // console.log(user.id, this.props.match.params.id)
+      console.log(filteredUsers)
       this.setState({
         users: filteredUsers,
         userAttributes: {
@@ -28,47 +32,53 @@ class EditUser extends React.Component {
           age: this.props.age
         },
       })
-      console.log(users, userAttributes)
-
+      console.log(users)
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    fetch(`/users/${this.props.params}.json`, {
+    fetch(`/users/${this.props.match.params.id}.json`, {
       method: 'PUT',
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({tool: this.state.userAttributes})
+      body: JSON.stringify({user: this.state.userAttributes})
     }).then((response) => {
-      return response.json()
-      .then((response) => {
-        this.setState({responseOk: true})
-      })
-    })
+      return response.json().then((json) => {
+        if(response.status === 201) {
+          this.setState({responseOk: true})
+        } else {
+          this.setState({responseOk: false, errors: json})
+        }
+        return json
+        })
+      }).catch((errors) => {
+        console.log(errors )
+        this.setState({responseOk: false, errors: {"System Error": ["Unknown problem has occurred"]}})
+        })
   }
 
-  handleChange = (event) => {
+  handleChange = (event ) => {
     let { userAttributes } = this.state
     userAttributes[event.target.name] = event.target.value
     this.setState({userAttributes: userAttributes})
-    console.log(userAttributes)
   }
 
   render () {
-    const { userAttributes } = this.state
-
+    const { userAttributes, errors, users } = this.state
+    // console.log(userAttributes, users)
     return (
       <div>
         <h1>Edit User</h1>
-        {/* <Errors errors={errors}/> */}
+        <Errors errors={errors} />
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='first_name'>First Name: </label>
           <input
             type='text'
             name='first_name'
-            value={userAttributes.first_name}
+            value={userAttributes.id}
             onChange={this.handleChange}
           />
           <br/>

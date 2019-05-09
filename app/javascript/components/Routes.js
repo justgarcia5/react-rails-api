@@ -14,8 +14,8 @@ const Routes = () => {
     <div>
       <Switch>
         <Route path='/' exact component={App}/>
-        <Route path='/add_user' exact component={AddUser}/>
-        <Route path='/edit_user/:id' exact component={EditUser}/>
+        <Route path='/add_users' exact component={AddUser}/>
+        <Route path='/edit_users/:id' exact component={EditUser}/>
       </Switch>
     </div>
   </Router>

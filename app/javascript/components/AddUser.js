@@ -49,7 +49,7 @@ class AddUser extends React.Component {
   }
 
   render () {
-    const { user, errors, responseOk, message } = this.state
+    const { user, errors, responseOk } = this.state
     // console.log(responseOk, user, errors)
 
     return (
