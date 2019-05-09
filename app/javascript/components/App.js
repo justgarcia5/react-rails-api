@@ -1,5 +1,6 @@
 import React from "react"
-import '../../assets/stylesheets/application.css'
+
+import Cards from './Cards'
 
 class App extends React.Component {
   state = {
@@ -19,16 +20,20 @@ class App extends React.Component {
 
     render () {
     return (
-      <div className='App'>
-        <h1>User List</h1>
-        <ul>
-          { this.state.users.map((user) =>
-            <li key={user.id}>
-              First Name: {user.first_name}, Last Name: {user.last_name}, Age: {user.age}
-            </li>
+      <div>
+        <h1 className='title'>User List</h1>
+        <div className='cards-grid'>
+          { this.state.users.map((user, index) =>
+            <Cards
+              key={index}
+              firstName={user.first_name}
+              lastName={user.last_name}
+              age={user.age}
+              id={user.id}
+            />
             )
           }
-        </ul>
+        </div>
       </div>
     );
   }

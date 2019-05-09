@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 
 import AddUser from './AddUser'
+import EditUser from './EditUser'
 import App from './App'
 
 const Routes = () => {
@@ -14,6 +15,7 @@ const Routes = () => {
       <Switch>
         <Route path='/' exact component={App}/>
         <Route path='/add_user' exact component={AddUser}/>
+        <Route path='/edit_user/:id' exact component={EditUser}/>
       </Switch>
     </div>
   </Router>
