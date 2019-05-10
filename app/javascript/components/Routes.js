@@ -13,9 +13,9 @@ const Routes = () => {
   return <Router>
     <div>
       <Switch>
-        <Route path='/' exact component={App}/>
-        <Route path='/add_users' exact component={AddUser}/>
-        <Route path='/edit_users/:id' exact component={EditUser}/>
+        <Route path='/' exact component={App} />
+        <Route path='/add_users' exact component={AddUser} />
+        <Route path='/edit_users/:id' exact component={EditUser} />
       </Switch>
     </div>
   </Router>

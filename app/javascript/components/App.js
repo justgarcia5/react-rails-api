@@ -16,14 +16,14 @@ class App extends React.Component {
           users: json,
         })
       })
-    }
+  }
 
-    render () {
+  render() {
     return (
       <div>
         <h1 className='title'>User List</h1>
         <div className='cards-grid'>
-          { this.state.users.map((user, index) =>
+          {this.state.users.map((user, index) =>
             <Cards
               key={index}
               firstName={user.first_name}
@@ -31,7 +31,7 @@ class App extends React.Component {
               age={user.age}
               id={user.id}
             />
-            )
+          )
           }
         </div>
       </div>
