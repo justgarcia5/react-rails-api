@@ -1,9 +1,9 @@
 import React from 'react'
 
-class Errors extends React.Component{
-  render(){
+class Errors extends React.Component {
+  render() {
     const { errors } = this.props
-    return(
+    return (
       <div>
         {errors &&
           <div className="error-div">
@@ -16,7 +16,7 @@ class Errors extends React.Component{
                     {" "}
                     {errors[key].join(', ')}
                   </li>)
-                })
+              })
               }
             </ul>
           </div>

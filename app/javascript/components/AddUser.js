@@ -26,29 +26,29 @@ class AddUser extends React.Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({user: this.state.user})
+      body: JSON.stringify({ user: this.state.user })
     }).then((response) => {
       return response.json().then((json) => {
-        if(response.status === 201) {
-          this.setState({responseOk: true})
+        if (response.status === 201) {
+          this.setState({ responseOk: true })
         } else {
-          this.setState({responseOk: false, errors: json})
+          this.setState({ responseOk: false, errors: json })
         }
         return json
-        })
-      }).catch((errors) => {
-        console.log(errors )
-        this.setState({responseOk: false, errors: {"System Error": ["Unknown problem has occurred"]}})
-        })
+      })
+    }).catch((errors) => {
+      console.log(errors)
+      this.setState({ responseOk: false, errors: { "System Error": ["Unknown problem has occurred"] } })
+    })
   }
 
   handleChange = (event) => {
     const { user } = this.state
     user[event.target.name] = event.target.value
-    this.setState({user: user})
+    this.setState({ user: user })
   }
 
-  render () {
+  render() {
     const { user, errors, responseOk } = this.state
     // console.log(responseOk, user, errors)
 
@@ -57,7 +57,7 @@ class AddUser extends React.Component {
         {responseOk &&
           <Redirect to="/" />
         }
-        <Errors errors={errors}/>
+        <Errors errors={errors} />
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='first_name'>First Name: </label>
           <input
@@ -66,7 +66,7 @@ class AddUser extends React.Component {
             value={user.first_name}
             onChange={this.handleChange}
           />
-          <br/>
+          <br />
           <label htmlFor='last_name'>Last Name: </label>
           <input
             type='text'
@@ -74,7 +74,7 @@ class AddUser extends React.Component {
             value={user.last_name}
             onChange={this.handleChange}
           />
-          <br/>
+          <br />
           <label htmlFor='age'>Age: </label>
           <input
             type='text'
@@ -82,7 +82,7 @@ class AddUser extends React.Component {
             value={user.age}
             onChange={this.handleChange}
           />
-          <br/>
+          <br />
           <button type='submit' >Submit</button>
         </form>
       </div>
