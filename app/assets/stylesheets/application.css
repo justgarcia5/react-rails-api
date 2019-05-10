@@ -3,18 +3,18 @@
 }
 .cards-container {
   border: 2px solid black;
-  width: 500px;
+  width: 200px;
   text-align: center;
   margin: 20px auto;
   background-color: green;
   border-radius: 10px;
 }
 
-@media {
+/* @media {
   .cards-container {
     min-width: 400px;
   }
-}
+} */
 
 .cards-container a {
   text-decoration: none;
@@ -26,7 +26,7 @@
   color: black;
 }
 
-.cards-container:hover {
+.cards-container:hover a {
   background-color: lightgreen;
 }
 
