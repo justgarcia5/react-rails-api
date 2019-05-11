@@ -4,7 +4,7 @@ import EditForm from './EditForm'
 
 class EditUser extends React.Component {
   state = {
-    user: [],
+    users: [],
   }
 
   componentDidMount = () => {
@@ -15,23 +15,24 @@ class EditUser extends React.Component {
         let filteredUsers = users.filter((user) => user.id == this.props.match.params.id)
         // console.log(filteredUsers[0])
         this.setState({
-          user: filteredUsers[0],
+          users: filteredUsers[0],
         })
         // console.log(this.state.user)
       })
   }
 
   render() {
-    const { user } = this.state
-    // console.log(user.first_name)
+    let { users } = this.state
+    // console.log(users)
     return (
       <div>
         <EditForm
-          firstname={user.first_name}
-          lastname={user.last_name}
-          age={user.age}
+          firstname={users.first_name}
+          lastname={users.last_name}
+          age={users.age}
           params={this.props.match.params.id}
-        />
+          />
+          {users.first_name}
       </div>
     )
   }

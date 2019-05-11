@@ -58,33 +58,41 @@ class AddUser extends React.Component {
           <Redirect to="/" />
         }
         <Errors errors={errors} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor='first_name'>First Name: </label>
-          <input
-            type='text'
-            name='first_name'
-            value={user.first_name}
-            onChange={this.handleChange}
-          />
-          <br />
-          <label htmlFor='last_name'>Last Name: </label>
-          <input
-            type='text'
-            name='last_name'
-            value={user.last_name}
-            onChange={this.handleChange}
-          />
-          <br />
-          <label htmlFor='age'>Age: </label>
-          <input
-            type='text'
-            name='age'
-            value={user.age}
-            onChange={this.handleChange}
-          />
-          <br />
-          <button type='submit' >Submit</button>
-        </form>
+        <div className='container-add-edit'>
+          <form onSubmit={this.handleSubmit}>
+            <div className='container-input'>
+              <label htmlFor='first_name' >First Name: </label>
+              <input
+                type='text'
+                name='first_name'
+                value={user.first_name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <br />
+            <div className='container-input'>
+              <label htmlFor='last_name'>Last Name: </label>
+              <input
+                type='text'
+                name='last_name'
+                value={user.last_name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <br />
+            <div className='container-input'>
+              <label htmlFor='age'>Age: </label>
+              <input
+                type='text'
+                name='age'
+                value={user.age}
+                onChange={this.handleChange}
+              />
+            </div>
+            <br />
+            <button type='submit' >Submit</button>
+          </form>
+        </div>
       </div>
     )
   }

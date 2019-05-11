@@ -20,7 +20,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <h1 className='title'>User List</h1>
         <div className='cards-grid'>
           {this.state.users.map((user, index) =>

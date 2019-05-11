@@ -16,28 +16,19 @@ class EditForm extends React.Component {
   }
 
   componentDidMount = () => {
-    let { userAttributes } = this.state
+    let { userAttributes } = this.props
     fetch(`/users.json`)
       .then((response) => response.json())
       .then((users) => {
-        // console.log(users)
-        let filteredUsers = users.filter((user) => {
-          user.id == this.props.params
-        // console.log(filteredUsers[0])
-        // console.log(user.first_name)
-          console.log(userAttributes)
-          this.setState({
-            users: filteredUsers,
-            userAttributes: {
-              first_name: this.props.firstname,
-              last_name: this.props.lastname,
-              age: this.props.age,
-              id: this.props.params
-            },
-          })
+        let filteredUsers = users.filter((user) => user.id === this.props.params)
+        this.setState({
+          users: filteredUsers,
+          userAttributes: {
+            first_name: this.props.firstname,
+            last_name: this.props.lastname,
+            age: this.props.age,
+          },
         })
-        console.log(this.props)
-
       })
   }
 
@@ -46,7 +37,8 @@ class EditForm extends React.Component {
     fetch(`/users/${this.props.params}.json`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({ user: this.state.userAttributes })
     }).then((response) => {
@@ -68,15 +60,14 @@ class EditForm extends React.Component {
   }
 
   handleChange = (event) => {
-    const { userAttributes } = this.state
+    let { userAttributes } = this.state
     userAttributes[event.target.name] = event.target.value
     this.setState({ userAttributes: userAttributes })
-    console.log(this.state.userAttributes)
   }
 
   render() {
     let { userAttributes, responseOk, errors } = this.state
-    console.log(this.props.firstname)
+    console.log(userAttributes)
     return (
       <div>
         {responseOk &&
@@ -90,7 +81,6 @@ class EditForm extends React.Component {
             type='text'
             name='first_name'
             value={userAttributes.first_name}
-            // value={this.props.firstname}
             onChange={this.handleChange}
           />
           <br />
