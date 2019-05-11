@@ -1,20 +1,18 @@
 * {
   box-sizing: border-box;
 }
+.cards-grid {
+  display: inline;
+}
+
 .cards-container {
   border: 2px solid black;
   width: 200px;
   text-align: center;
   margin: 20px auto;
-  background-color: green;
+  background-color: grey;
   border-radius: 10px;
 }
-
-/* @media {
-  .cards-container {
-    min-width: 400px;
-  }
-} */
 
 .cards-container a {
   text-decoration: none;
@@ -36,4 +34,53 @@
 }
 .title {
   text-align: center;
+}
+
+.container-add-edit {
+  border: 1px solid black;
+  margin: 60px auto;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.container-add-edit button {
+  font-size: 20px;
+}
+
+.container-add-edit:hover button {
+  background-color: gray,
+}
+
+.container-input {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.NavBar {
+  text-align: right;
+  background-color: grey;
+}
+
+.NavBar li {
+  float: left;
+}
+
+.NavBar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.NavBar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.NavBar li a:hover {
+  background-color: #111;
 }
