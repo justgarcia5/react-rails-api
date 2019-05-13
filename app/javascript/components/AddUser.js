@@ -58,6 +58,7 @@ class AddUser extends React.Component {
           <Redirect to="/" />
         }
         <Errors errors={errors} />
+        <h1 className='title'>Add User</h1>
         <div className='container-add-edit'>
           <form onSubmit={this.handleSubmit}>
             <div className='container-input'>
