@@ -20,19 +20,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <div>
         <h1 className='title'>User List</h1>
-        <div className='cards-grid'>
-          {this.state.users.map((user, index) =>
-            <Cards
-              key={index}
-              firstName={user.first_name}
-              lastName={user.last_name}
-              age={user.age}
-              id={user.id}
-            />
-          )
-          }
+        <div className='container'>
+          <div className='cards-grid'>
+            {this.state.users.map((user, index) =>
+              <Cards
+                key={index}
+                firstName={user.first_name}
+                lastName={user.last_name}
+                age={user.age}
+                id={user.id}
+              />
+            )
+            }
+          </div>
         </div>
       </div>
     );
