@@ -124,12 +124,9 @@ class EditForm extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='add-user'>
-              <button type='submit' >Submit</button>
-            </div>
-            <div className='add-user' >
-              <button type='delete' onClick={() => this.handleDelete(this.props.params.id)} type='submit' data-confirm="Are you sure you want to delete this item?" >Delete</button>
-              {/* <a className="delete" type='submit' data-confirm="Are you sure you want to delete this item?" onClick={() => this.handleDelete(user.id)} rel="nofollow"><b>X</b></a> */}
+            <div className='buttons-div'>
+              <button className='add-user' type='submit' >Submit</button>
+              <button className='delete-user' type='delete' onClick={() => this.handleDelete(this.props.params.id)} type='submit' data-confirm="Are you sure you want to delete this item?" >Delete</button>
             </div>
           </form>
         </div>
