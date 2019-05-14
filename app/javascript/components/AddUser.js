@@ -30,12 +30,11 @@ class AddUser extends React.Component {
     }).then((response) => {
       return response.json().then((json) => {
         if (response.status === 201) {
-          this.setState({ responseOk: true })
+          this.setState({ responseOk: true, message: 'User was successfully Submitted' })
         } else {
           this.setState({
             responseOk: false,
             errors: json,
-            message: 'User was successfully Submitted'
           })
         }
         return json
@@ -63,7 +62,10 @@ class AddUser extends React.Component {
           />
         }
         <h1 className='title'>Add User</h1>
-        <Errors errors={errors} />
+        <Errors
+          errors={errors}
+          message={message}
+        />
         <div className='container-add-edit'>
           <form onSubmit={this.handleSubmit}>
             <div className='container-input'>
@@ -96,8 +98,8 @@ class AddUser extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='add-user'>
-              <button type='submit' >Submit</button>
+            <div className='buttons-div'>
+              <button className='add-user'type='submit' >Submit</button>
             </div>
           </form>
         </div>

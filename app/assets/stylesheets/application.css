@@ -55,27 +55,43 @@
     box-shadow: 10px 10px 5px grey;
 }
 
-.add-user {
+.buttons-div {
     text-align: right;
     margin-right: 50px;
-    margin-bottom: 22px
+    margin-bottom: 22px;
+    margin-left: 20px;
 }
 
-.add-user button {
+.add-user {
     background-color: #4CAF50;
     margin: 15px auto;
-    border-radius: 2px;
-    padding: 15px 32px;
-    /* display: inline-block; */
+    border-radius: 3px;
+    padding: 10px 24px;
+    display: inline-block;
     font-size: 16px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    float: center;
 }
 
-.add-user button:hover {
+.add-user:hover {
     background-color: darkgreen;
     color: white;
+}
+
+.delete-user:hover {
+    background-color: darkred;
+    color: white;
+}
+
+.delete-user {
+    background-color: red;
+    margin: 15px auto;
+    border-radius: 3px;
+    padding: 10px 24px;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
 
 .container-input {
