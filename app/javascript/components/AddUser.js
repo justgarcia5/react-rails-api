@@ -32,7 +32,11 @@ class AddUser extends React.Component {
         if (response.status === 201) {
           this.setState({ responseOk: true })
         } else {
-          this.setState({ responseOk: false, errors: json })
+          this.setState({
+            responseOk: false,
+            errors: json,
+            message: 'User was successfully Submitted'
+          })
         }
         return json
       })
@@ -49,49 +53,52 @@ class AddUser extends React.Component {
   }
 
   render() {
-    const { user, errors, responseOk } = this.state
+    const { user, errors, responseOk, message } = this.state
     // console.log(responseOk, user, errors)
 
     return (
       <div>
         {responseOk &&
-          <Redirect to="/" />
+          <Redirect to="/"
+          />
         }
-        <Errors errors={errors} />
         <h1 className='title'>Add User</h1>
+        <Errors errors={errors} />
         <div className='container-add-edit'>
           <form onSubmit={this.handleSubmit}>
             <div className='container-input'>
-              <label htmlFor='first_name' >First Name: </label>
+              <label htmlFor='first_name' className='container-label'>First Name: </label>
               <input
+                className='input'
                 type='text'
                 name='first_name'
                 value={user.first_name}
                 onChange={this.handleChange}
               />
             </div>
-            <br />
             <div className='container-input'>
-              <label htmlFor='last_name'>Last Name: </label>
+              <label htmlFor='last_name' className='container-label'>Last Name: </label>
               <input
+                className='input'
                 type='text'
                 name='last_name'
                 value={user.last_name}
                 onChange={this.handleChange}
               />
             </div>
-            <br />
             <div className='container-input'>
-              <label htmlFor='age'>Age: </label>
+              <label htmlFor='age' className='container-label'>Age: </label>
               <input
+                className='input'
                 type='text'
                 name='age'
                 value={user.age}
                 onChange={this.handleChange}
               />
             </div>
-            <br />
-            <button type='submit' >Submit</button>
+            <div className='add-user'>
+              <button type='submit' >Submit</button>
+            </div>
           </form>
         </div>
       </div>

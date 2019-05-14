@@ -59,6 +59,23 @@ class EditForm extends React.Component {
     })
   }
 
+  handleDelete = (id) => {
+    fetch(`/users/${id}.json`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then((response) => {
+        this.deleteUser(id)
+      })
+  }
+
+  deleteUser = (id) => {
+    let filteredUsers = this.state.users.filter((user) => user.id !== this.props.params)
+    this.setState({ users: filteredUsers })
+  }
+
   handleChange = (event) => {
     let { userAttributes } = this.state
     userAttributes[event.target.name] = event.target.value
@@ -73,35 +90,49 @@ class EditForm extends React.Component {
         {responseOk &&
           <Redirect to="/" />
         }
-        <h1>Edit User</h1>
+        <h1 className='title'>Edit User</h1>
         <Errors errors={errors} />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor='first_name'>First Name: </label>
-          <input
-            type='text'
-            name='first_name'
-            value={userAttributes.first_name}
-            onChange={this.handleChange}
-          />
-          <br />
-          <label htmlFor='last_name'>Last Name: </label>
-          <input
-            type='text'
-            name='last_name'
-            value={userAttributes.last_name}
-            onChange={this.handleChange}
-          />
-          <br />
-          <label htmlFor='age'>Age: </label>
-          <input
-            type='text'
-            name='age'
-            value={userAttributes.age}
-            onChange={this.handleChange}
-          />
-          <br />
-          <button type='submit' >Submit</button>
-        </form>
+        <div className='container-add-edit'>
+          <form onSubmit={this.handleSubmit}>
+            <div className='container-input'>
+              <label htmlFor='first_name' className='container-label'>First Name: </label>
+              <input
+                className='input'
+                type='text'
+                name='first_name'
+                value={userAttributes.first_name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className='container-input'>
+              <label htmlFor='last_name' className='container-label'>Last Name: </label>
+              <input
+                className='input'
+                type='text'
+                name='last_name'
+                value={userAttributes.last_name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className='container-input'>
+              <label htmlFor='age' className='container-label'>Age: </label>
+              <input
+                className='input'
+                type='text'
+                name='age'
+                value={userAttributes.age}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className='add-user'>
+              <button type='submit' >Submit</button>
+            </div>
+            <div className='add-user' >
+              <button type='delete' onClick={() => this.handleDelete(this.props.params.id)} type='submit' data-confirm="Are you sure you want to delete this item?" >Delete</button>
+              {/* <a className="delete" type='submit' data-confirm="Are you sure you want to delete this item?" onClick={() => this.handleDelete(user.id)} rel="nofollow"><b>X</b></a> */}
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
