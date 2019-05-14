@@ -12,8 +12,10 @@ class Errors extends React.Component {
               {Object.keys(errors).map((key, index) => {
                 return (
                   <li className="error-text" key={index}>
+                    <i>*</i>
+                    {' '}
                     {key}
-                    {" "}
+                    {' '}
                     {errors[key].join(', ')}
                   </li>)
               })

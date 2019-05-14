@@ -31,8 +31,7 @@ class EditUser extends React.Component {
           lastname={users.last_name}
           age={users.age}
           params={this.props.match.params.id}
-          />
-          {users.first_name}
+        />
       </div>
     )
   }
