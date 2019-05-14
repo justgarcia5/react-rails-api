@@ -60,7 +60,7 @@ class EditForm extends React.Component {
   }
 
   handleDelete = (id) => {
-    fetch(`/users/${id}.json`, {
+    fetch(`/users/${this.props.params}.json`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
