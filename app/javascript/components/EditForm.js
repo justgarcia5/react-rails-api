@@ -16,24 +16,25 @@ class EditForm extends React.Component {
   }
 
   componentDidMount = () => {
-    let { userAttributes } = this.props
     fetch(`/users.json`)
       .then((response) => response.json())
       .then((users) => {
-        let filteredUsers = users.filter((user) => user.id === this.props.params)
+        let filteredUsers = users.filter((user) => user.id == this.props.params)
+        console.log(filteredUsers)
         this.setState({
           users: filteredUsers,
           userAttributes: {
             first_name: this.props.firstname,
             last_name: this.props.lastname,
-            age: this.props.age,
-          },
+            age: this.props.age
+          }
         })
       })
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
+    // console.log(this.props.params)
     fetch(`/users/${this.props.params}.json`, {
       method: 'PUT',
       headers: {
@@ -59,23 +60,6 @@ class EditForm extends React.Component {
     })
   }
 
-  handleDelete = (id) => {
-    fetch(`/users/${this.props.params}.json`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-      .then((response) => {
-        this.deleteUser(id)
-      })
-  }
-
-  deleteUser = (id) => {
-    let filteredUsers = this.state.users.filter((user) => user.id !== this.props.params)
-    this.setState({ users: filteredUsers })
-  }
-
   handleChange = (event) => {
     let { userAttributes } = this.state
     userAttributes[event.target.name] = event.target.value
@@ -84,7 +68,7 @@ class EditForm extends React.Component {
 
   render() {
     let { userAttributes, responseOk, errors } = this.state
-    console.log(userAttributes)
+    // console.log(userAttributes)
     return (
       <div>
         {responseOk &&
@@ -126,7 +110,7 @@ class EditForm extends React.Component {
             </div>
             <div className='buttons-div'>
               <button className='add-user' type='submit' >Submit</button>
-              <button className='delete-user' type='delete' onClick={() => this.handleDelete(this.props.params.id)} type='submit' data-confirm="Are you sure you want to delete this item?" >Delete</button>
+              <button className='delete-user' type='delete' onClick={() => this.props.handleDelete(userAttributes.id)} type='submit' data-confirm="Are you sure you want to delete this item?" >Delete</button>
             </div>
           </form>
         </div>
