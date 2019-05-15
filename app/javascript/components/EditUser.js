@@ -21,6 +21,23 @@ class EditUser extends React.Component {
       })
   }
 
+  handleDelete = (id) => {
+    fetch(`/users/${this.props.match.params.id}.json`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then((response) => {
+        this.deleteUser(id)
+      })
+  }
+
+  deleteUser = (id) => {
+    let filteredUsers = this.state.users.filter((user) => user.id !== id)
+    this.setState({ users: filteredUsers })
+  }
+
   render() {
     let { users } = this.state
     // console.log(users)
@@ -31,6 +48,7 @@ class EditUser extends React.Component {
           lastname={users.last_name}
           age={users.age}
           params={this.props.match.params.id}
+          handleDelete={this.handleDelete}
         />
       </div>
     )
