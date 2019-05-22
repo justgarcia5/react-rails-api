@@ -15,26 +15,26 @@ class EditForm extends React.Component {
     }
   }
 
-  componentDidMount = () => {
+  _componentDidMount = () => {
     fetch(`/users.json`)
       .then((response) => response.json())
       .then((users) => {
-        let filteredUsers = users.filter((user) => user.id == this.props.params)
-        console.log(filteredUsers)
+        let filteredUsers = users.filter((user) => user.id == this.props.params);
+        console.log(filteredUsers[0]);
         this.setState({
-          users: filteredUsers,
-          userAttributes: {
-            first_name: this.props.firstname,
-            last_name: this.props.lastname,
-            age: this.props.age
-          }
-        })
-      })
+          users: filteredUsers[0],
+        });
+      });
+  };
+  get componentDidMount() {
+    return this._componentDidMount;
+  }
+  set componentDidMount(value) {
+    this._componentDidMount = value;
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // console.log(this.props.params)
     fetch(`/users/${this.props.params}.json`, {
       method: 'PUT',
       headers: {
@@ -68,7 +68,7 @@ class EditForm extends React.Component {
 
   render() {
     let { userAttributes, responseOk, errors } = this.state
-    // console.log(userAttributes)
+    console.log(userAttributes)
     return (
       <div>
         {responseOk &&

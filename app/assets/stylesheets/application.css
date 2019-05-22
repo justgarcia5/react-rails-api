@@ -117,7 +117,7 @@
     float: left;
 }
 
-.NavBar li a {
+.NavBar a {
     display: block;
     color: white;
     text-align: center;
@@ -128,12 +128,12 @@
 .NavBar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     overflow: hidden;
     background-color: #333;
 }
 
-.NavBar li a:hover {
+.NavBar a:hover {
     background-color: #111;
 }
 

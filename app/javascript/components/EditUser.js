@@ -11,13 +11,11 @@ class EditUser extends React.Component {
     fetch(`/users.json`)
       .then((response) => response.json())
       .then((users) => {
-        // console.log(users)
         let filteredUsers = users.filter((user) => user.id == this.props.match.params.id)
         // console.log(filteredUsers[0])
         this.setState({
           users: filteredUsers[0],
         })
-        // console.log(this.state.user)
       })
   }
 
@@ -34,13 +32,13 @@ class EditUser extends React.Component {
   }
 
   deleteUser = (id) => {
-    let filteredUsers = this.state.users.filter((user) => user.id !== id)
+    let filteredUsers = this.state.users.filter(user => user.id != id)
     this.setState({ users: filteredUsers })
   }
 
   render() {
     let { users } = this.state
-    // console.log(users)
+    // console.log(users.first_name)
     return (
       <div>
         <EditForm
