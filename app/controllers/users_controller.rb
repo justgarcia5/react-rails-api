@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        # render json: @user
         format.html { redirect_to @user, notice: 'user was successfully updated.' }
         format.json { render json: :show, status: :created, location: @user }
       else
