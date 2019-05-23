@@ -15,23 +15,23 @@ class EditForm extends React.Component {
     }
   }
 
-  _componentDidMount = () => {
+  componentDidMount = () => {
     fetch(`/users.json`)
       .then((response) => response.json())
       .then((users) => {
         let filteredUsers = users.filter((user) => user.id == this.props.params);
-        console.log(filteredUsers[0]);
+        // console.log(filteredUsers, this.state.userAttributes);
         this.setState({
-          users: filteredUsers[0],
+          users: filteredUsers,
+          userAttributes: {
+            first_name: this.props.firstname,
+            last_name: this.props.lastname,
+            age: this.props.age,
+          }
         });
+        console.log(this.state.userAttributes)
       });
   };
-  get componentDidMount() {
-    return this._componentDidMount;
-  }
-  set componentDidMount(value) {
-    this._componentDidMount = value;
-  }
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -68,7 +68,7 @@ class EditForm extends React.Component {
 
   render() {
     let { userAttributes, responseOk, errors } = this.state
-    console.log(userAttributes)
+    // console.log(userAttributes)
     return (
       <div>
         {responseOk &&
@@ -84,7 +84,7 @@ class EditForm extends React.Component {
                 className='input'
                 type='text'
                 name='first_name'
-                value={userAttributes.first_name}
+                value={userAttributes.firstname}
                 onChange={this.handleChange}
               />
             </div>
@@ -94,7 +94,7 @@ class EditForm extends React.Component {
                 className='input'
                 type='text'
                 name='last_name'
-                value={userAttributes.last_name}
+                value={userAttributes.lastname}
                 onChange={this.handleChange}
               />
             </div>

@@ -5,9 +5,9 @@ import {
   Switch,
 } from 'react-router-dom'
 
-import AddUser from './AddUser'
-import EditUser from './EditUser'
-import App from './App'
+import AddUser from '../pages/AddUser'
+import EditUser from '../pages/EditUser'
+import App from '../pages/App'
 
 const Routes = () => {
   return <Router>
