@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       if @user.save
         # render json: @user
         format.html { redirect_to @user, notice: 'user was successfully updated.' }
-        format.json { render json: :show, status: :created, location: @user }
+        format.json { render json: :index, status: :created , location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
