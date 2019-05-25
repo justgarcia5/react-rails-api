@@ -23,17 +23,18 @@ class EditForm extends React.Component {
         // console.log(filteredUsers, this.state.userAttributes);
         this.setState({
           users: filteredUsers,
-          userAttributes: {
-            first_name: this.props.firstname,
-            last_name: this.props.lastname,
-            age: this.props.age,
-          }
+          // userAttributes: {
+          //   first_name: filteredUsers.first_name,
+          //   last_name: filteredUsers.last_name,
+          //   age: filteredUsers.age,
+          // }
         });
-        console.log(this.state.userAttributes)
+        console.log(this.state.users)
       });
   };
 
   handleSubmit = (event) => {
+    console.log(this.userAttributes.first_name, response)
     event.preventDefault()
     fetch(`/users/${this.props.params}.json`, {
       method: 'PUT',
@@ -67,8 +68,8 @@ class EditForm extends React.Component {
   }
 
   render() {
-    let { userAttributes, responseOk, errors } = this.state
-    // console.log(userAttributes)
+    let {  userAttributes, responseOk, errors } = this.state
+    console.log(userAttributes)
     return (
       <div>
         {responseOk &&
@@ -84,7 +85,7 @@ class EditForm extends React.Component {
                 className='input'
                 type='text'
                 name='first_name'
-                value={userAttributes.firstname}
+                value={userAttributes.first_name}
                 onChange={this.handleChange}
               />
             </div>
@@ -94,7 +95,7 @@ class EditForm extends React.Component {
                 className='input'
                 type='text'
                 name='last_name'
-                value={userAttributes.lastname}
+                value={userAttributes.last_name}
                 onChange={this.handleChange}
               />
             </div>

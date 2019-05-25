@@ -5,10 +5,10 @@ const Cards = props => (
     <a href={`/edit_users/${props.id}`} >
       <div className='cards-items'>
         <p>
-          First Name: <b>{props.firstName}</b>
+          First Name: <b>{props.firstname}</b>
         </p>
         <p>
-          Last Name: <b>{props.lastName}</b>
+          Last Name: <b>{props.lastname}</b>
         </p>
         <p>
           Age: <b>{props.age}</b>
